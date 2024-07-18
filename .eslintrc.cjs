@@ -15,6 +15,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "react/no-unescaped-entities": 0,
   },
 };
