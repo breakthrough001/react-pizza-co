@@ -1,42 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  // cart: [],
-  cart: [
-    {
-      pizzaId: 12,
-      name: 'Mediterranean',
-      quantity: 2,
-      unitPrice: 16,
-      totalPrice: 32,
-    },
-  ],
+  cartState: [],
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: 'cart', // name comes from what you called it in the store.js file
   initialState,
   reducers: {
     addItem(state, action) {
       // payload = newItem
-      state.cart.push(action.payload);
+      state.cartState.push(action.payload);
     },
     deleteItem(state, action) {
       // payload = pizzaId
-      state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
+      state.cartState = state.cartState.filter(
+        (item) => item.pizzaId !== action.payload,
+      );
     },
     increaseItemQuantity(state, action) {
-      const item = state.cart.find((item) => item.pizzaId === action.payload);
+      const item = state.cartState.find(
+        (item) => item.pizzaId === action.payload,
+      );
       item.quantity++;
       item.totalPrice = item.quantity * item.unitPrice;
     },
     decreateItemQuantity(state, action) {
-      const item = state.cart.find((item) => item.pizzaId === action.payload);
+      const item = state.cartState.find(
+        (item) => item.pizzaId === action.payload,
+      );
       item.quantity--;
       item.totalPrice = item.quantity * item.unitPrice;
     },
     clearCart(state) {
-      state.cart = [];
+      state.cartState = [];
     },
   },
 });
@@ -50,3 +47,14 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+// Selector functions
+
+export const getCart = (state) => state.cart.cartState;
+
+export const getTotalCartQuantity = (state) =>
+  // cart.cart bc it is called cart and you need to access cart inside of it
+  state.cart.cartState.reduce((sum, item) => sum + item.quantity, 0);
+
+export const getTotalCartPrice = (state) =>
+  state.cart.cartState.reduce((sum, item) => sum + item.totalPrice, 0);
