@@ -21,17 +21,16 @@ function Cart() {
 
       <ul className="mt-3 divide-y divide-stone-200 border-b">
         {cart.map((item) => (
-          <CartItem item={item} key={item.key} />
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
 
-      <div className="mt-6 space-x-2">
-        <Button to="/order/new" type="primary">
-          Order pizzas
-        </Button>
-
+      <div className="mt-6 space-x-4">
         <Button type="secondary" onClick={() => dispatch(clearCart())}>
           Clear cart
+        </Button>
+        <Button to="/order/new" type="primary">
+          Order pizzas
         </Button>
       </div>
     </div>
