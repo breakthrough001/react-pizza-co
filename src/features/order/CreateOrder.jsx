@@ -174,7 +174,7 @@ function CreateOrder() {
 }
 
 export async function action({ request }) {
-  // this formData() is a built in JS function that just gets the forms data you fill out
+  // this formData() is a built in JS function that just gets the form's data you fill out
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
@@ -183,8 +183,6 @@ export async function action({ request }) {
     cart: JSON.parse(data.cart),
     priority: data.priority === 'true',
   };
-
-  console.log(order);
 
   const errors = {};
   if (!isValidPhone(order.phone))

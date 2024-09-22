@@ -5,8 +5,6 @@ function Username() {
 
   if (!username) return null;
 
-  console.log(username);
-
   return (
     <div className="hidden text-sm font-semibold md:block">{username}</div>
   );
