@@ -97,7 +97,7 @@ function Order() {
 }
 
 export async function loader({ params }) {
-  const order = await getOrder(params.orderId); // it is called order id bc that is the name you gave it in the App.jsx — path: "/order/:orderId",
+  const order = await getOrder(params.orderId); // it is called order id bc that is the name you gave it in the App.jsx — path: "/order/:orderId" in react router
   return order;
 }
 
