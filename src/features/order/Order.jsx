@@ -14,7 +14,7 @@ import UpdateOrder from './UpdateOrder';
 function Order() {
   const order = useLoaderData(); // this gets the data from the loader that fetched the api
 
-  const fetcher = useFetcher();
+  const fetcher = useFetcher(); // this lets you fetch data from another page without having to navigate there
 
   useEffect(
     function () {
